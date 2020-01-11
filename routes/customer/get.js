@@ -10,7 +10,10 @@ router.post("/",(request,response)=>
     let query=`SELECT * FROM customer WHERE customer_id='${id}';`;
     db.query(query,function(err,result){
         if (err != null) response.status(500).send({ error: err.message });
+        if(result.length>0)
         subquery(result);
+        else
+        response.json({message:"customer not found",success:false});
     });
 
     function subquery(result){
