@@ -12,8 +12,8 @@ var customer = require("./customer/customer");
 
 router.use("/customer", customer);
 
-// var customer = require("./collectionBoy/collectionBoy");
+ var customer = require("./collectionBoy/collectionBoy");
 
-// router.use("/collectionBoy", collectionBoy);
+ router.use("/collectionBoy", collectionBoy);
 
 module.exports = router;
