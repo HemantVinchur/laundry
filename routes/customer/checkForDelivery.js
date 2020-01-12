@@ -3,7 +3,7 @@ const db = require("../db");
 const router = express.Router();
 router.post("/",(request,response)=>
 {
-    let query=`SELECT status FROM orders WHERE customer_id='${request.body.customer_id}' AND status='9'`;
+    let query=`SELECT status FROM orders WHERE customer_id='${request.body.customer_id}' AND status='14'`;
     db.query(query,(err,res)=>{
         if (err != null) response.status(500).json({ error: err.message , success: false});
         console.log(res);

@@ -9,7 +9,11 @@ router.post("/",(request,response)=>
                WHERE society_id='${request.body.society_id}';`;
     db.query(query,(err,res)=>{
         if (err != null) response.status(500).json({ error: err.message, success: false });
-        response.status(200).json({result:res, success: true});
+        if(res.length>0){response.status(200).json({result:res, success: true});}
+        else {
+            response.json({success:true,message:"Rate Not Updated For Your Society"});
+        }
+        
     });
 });
 module.exports=router;

@@ -3,16 +3,17 @@ const db = require("../db");
 const router = express.Router();
 router.post("/",(request,response)=>
 {
-    let wings=`SELECT wings_id,wings_name FROM wings WHERE society_id='${request.body.society_id}';`;
-    db.query(wings,(err,res)=>
+    let society=`SELECT society_id FROM society WHERE society_name='${request.body.society_name}'`;
+    db.query(society,(err,res)=>
     {
-        if (err != null) response.status(500).json({ error: err.message,success:false });
+        if (err != null) response.status(500).json({ error: err.message, success:false});
         if(res.length>0){
         response.status(200).json({result:res,success:true});
         }
         else{
-            response.json({message:"No Wings Exist Of This Society",success:true});
+            response.json({message:"Society Doesn't Exist",success:true});
         }
     });
+
 });
 module.exports=router;
