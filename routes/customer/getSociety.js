@@ -3,7 +3,7 @@ const db = require("../db");
 const router = express.Router();
 router.post("/",(request,response)=>
 {
-    let society=`SELECT society_id FROM society WHERE society_name='${request.body.society_name}'`;
+    let society=`SELECT society_id,society_name FROM society`;
     db.query(society,(err,res)=>
     {
         if (err != null) response.status(500).json({ error: err.message, success:false});
