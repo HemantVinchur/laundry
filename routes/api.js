@@ -12,7 +12,7 @@ var customer = require("./customer/customer");
 
 router.use("/customer", customer);
 
- var customer = require("./collectionBoy/collectionBoy");
+ var collectionBoy = require("./collectionBoy/collectionBoy");
 
  router.use("/collectionBoy", collectionBoy);
 
