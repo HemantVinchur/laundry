@@ -1,6 +1,6 @@
 const express = require("express");
 const db = require("../db");
-const verifyToken = require("../verifyToken");
+const verifyToken = require("./../admin/verifyToken");
 const router = express.Router();
 router.post("/",verifyToken,(request,response)=>
 {
@@ -9,8 +9,8 @@ router.post("/",verifyToken,(request,response)=>
     db.query(query,(err,res)=>{
         if (err != null) response.status(500).json({ error: err.message , success: false});
         if(res.affectedRows>0)
-        {
-            res.json({result:result,success:true});
+        {   
+            response.json({msg:"Order Updated",success:true});
         }
         else
         res.json({message:"No order exist",success:true});

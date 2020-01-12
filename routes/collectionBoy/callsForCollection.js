@@ -1,6 +1,6 @@
 const express = require("express");
 const db = require("../db");
-const verifyToken = require("../verifyToken");
+const verifyToken = require("./../admin/verifyToken");
 const router = express.Router();
 router.post("/",verifyToken,(req,res)=>
 {
