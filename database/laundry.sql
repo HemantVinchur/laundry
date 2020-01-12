@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2020 at 02:53 PM
+-- Generation Time: Jan 12, 2020 at 01:30 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -116,7 +116,8 @@ INSERT INTO `customer` (`customer_id`, `customer_name`, `society_id`, `wings_id`
 ('1', 'Satyam', 2, 3, 10, '9898989898', NULL, NULL),
 ('2', 'Samyak', 2, 3, 11, '9898989898', NULL, NULL),
 ('3', 'Sam', 2, 3, 11, '9898989898', NULL, NULL),
-('4', 'yala', 2, 3, 1, '9898989898', NULL, NULL);
+('4', 'yala', 2, 3, 1, '9898989898', NULL, NULL),
+('5', 'yala', 1, 2, 12, '9898989898', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -156,8 +157,7 @@ CREATE TABLE `mapping_collectionboy` (
 --
 
 INSERT INTO `mapping_collectionboy` (`map_coll_id`, `admin_id`, `centre_id`, `date_from`, `date_to`, `attribute_1`, `attribute_2`, `attribute_3`) VALUES
-(1, 6, 1, '2019-12-26 00:00:00', '2020-06-27', NULL, NULL, NULL),
-(2, 6, 1, '2020-01-16 16:18:30', '2020-01-14', NULL, NULL, NULL);
+(1, 6, 1, '2019-12-26 00:00:00', '2020-06-27', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -203,10 +203,12 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `customer_id`, `total_count`, `status`, `picked_date`, `delivery_date`) VALUES
-(1, '1', 20, 4, '2020-01-02', '2020-01-16'),
-(2, '1', 23, 1, '2020-01-07', '2020-01-15'),
-(3, '2', NULL, 0, NULL, NULL),
-(4, '2', NULL, 0, NULL, NULL);
+(1, '1', 20, 18, '2020-01-02', '2020-01-16'),
+(2, '1', 23, 18, '2020-01-07', '2020-01-15'),
+(3, '1', 12, 14, '2020-01-07', '2020-01-08'),
+(4, '4', NULL, 0, NULL, NULL),
+(5, '5', NULL, 0, '2020-01-02', NULL),
+(7, '5', NULL, 1, '2020-01-07', NULL);
 
 -- --------------------------------------------------------
 
@@ -227,7 +229,9 @@ CREATE TABLE `order_detail` (
 
 INSERT INTO `order_detail` (`detail_id`, `order_id`, `cloth_type_id`, `count`) VALUES
 (1, 1, 1, 20),
-(2, 1, 2, 11);
+(2, 1, 2, 11),
+(3, 3, 1, 21),
+(4, 3, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -250,7 +254,8 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `customer_id`, `amount`, `start_date`, `end_date`, `order_id`, `status`) VALUES
-(1, '1', 200, '2020-01-07', '2020-01-10', 1, 14),
+(0, '1', 321, '2020-01-08', '2020-01-10', 3, 14),
+(1, '1', 200, '2020-01-07', '2020-01-10', 1, 13),
 (2, '1', 250, '2020-01-08', '2020-01-12', 2, 14);
 
 -- --------------------------------------------------------
@@ -329,7 +334,11 @@ INSERT INTO `status` (`status_id`, `status_desc`) VALUES
 (11, 'ACCEPTED BY COLLECTION BOY TO DELIVER '),
 (12, 'DELIVERED SUCCESSFULLY'),
 (13, 'INVOICE GENEREATED'),
-(14, 'PAYMENT RECIEVED');
+(14, 'PAYMENT RECIEVED'),
+(15, 'PENDING REQUEST'),
+(16, 'POINTS ADDED FOR THIS PAYMENT'),
+(17, 'CALLED FOR DELIVERY'),
+(18, 'TRANSACTION FAILED');
 
 -- --------------------------------------------------------
 
@@ -342,28 +351,45 @@ CREATE TABLE `time` (
   `order_id` int(11) NOT NULL,
   `status_id` int(11) NOT NULL,
   `timestamp` datetime(6) NOT NULL,
-  `attr1` varchar(255) DEFAULT NULL,
-  `attr2` varchar(255) DEFAULT NULL
+  `t_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `time`
 --
 
-INSERT INTO `time` (`time_id`, `order_id`, `status_id`, `timestamp`, `attr1`, `attr2`) VALUES
-(1, 1, 6, '0000-00-00 00:00:00.000000', NULL, NULL),
-(2, 1, 6, '0000-00-00 00:00:00.000000', NULL, NULL),
-(3, 1, 4, '0000-00-00 00:00:00.000000', NULL, NULL),
-(4, 1, 4, '0000-00-00 00:00:00.000000', NULL, NULL),
-(5, 1, 4, '0000-00-00 00:00:00.000000', NULL, NULL),
-(6, 1, 4, '0000-00-00 00:00:00.000000', NULL, NULL),
-(7, 1, 4, '2020-01-19 00:00:00.000000', NULL, NULL),
-(10, 1, 4, '2020-01-19 09:24:22.000000', NULL, NULL),
-(11, 1, 4, '2020-01-19 14:24:22.000000', NULL, NULL),
-(12, 1, 4, '2020-00-05 18:58:24.000000', NULL, NULL),
-(13, 1, 4, '2020-00-05 19:00:05.000000', NULL, NULL),
-(14, 1, 4, '2020-00-05 19:02:08.000000', NULL, NULL),
-(15, 4, 0, '2020-00-05 19:07:20.000000', NULL, NULL);
+INSERT INTO `time` (`time_id`, `order_id`, `status_id`, `timestamp`, `t_id`, `customer_id`) VALUES
+(14, 1, 13, '2020-00-05 19:02:08.000000', NULL, 1),
+(19, 1, 14, '2020-01-22 00:00:00.000000', NULL, 1),
+(20, 2, 0, '2020-01-16 00:00:00.000000', NULL, 1),
+(21, 3, 14, '2020-01-12 00:00:00.000000', NULL, 1),
+(39, 5, 0, '2020-01-09 00:00:00.000000', NULL, 0),
+(40, 7, 1, '2020-01-15 08:34:09.430181', NULL, 0),
+(41, 1, 14, '2020-01-12 17:29:47.000000', NULL, 0),
+(42, 2, 14, '2020-01-12 17:29:47.000000', NULL, 0),
+(43, 1, 18, '2020-01-12 17:40:17.000000', NULL, 0),
+(44, 2, 18, '2020-01-12 17:40:17.000000', NULL, 0),
+(45, 1, 18, '2020-01-12 17:41:13.000000', NULL, 0),
+(46, 2, 18, '2020-01-12 17:41:13.000000', NULL, 0),
+(47, 1, 18, '2020-01-12 17:41:25.000000', NULL, 0),
+(48, 2, 18, '2020-01-12 17:41:25.000000', NULL, 0),
+(49, 1, 18, '2020-01-12 17:41:46.000000', NULL, 0),
+(50, 2, 18, '2020-01-12 17:41:46.000000', NULL, 0),
+(51, 1, 18, '2020-01-12 17:42:04.000000', NULL, 0),
+(52, 2, 18, '2020-01-12 17:42:04.000000', NULL, 0),
+(53, 1, 18, '2020-01-12 17:44:01.000000', NULL, 0),
+(54, 2, 18, '2020-01-12 17:44:01.000000', NULL, 0),
+(55, 1, 18, '2020-01-12 17:44:19.000000', NULL, 0),
+(56, 2, 18, '2020-01-12 17:44:19.000000', NULL, 0),
+(57, 1, 18, '2020-01-12 17:44:37.000000', NULL, 0),
+(58, 2, 18, '2020-01-12 17:44:37.000000', NULL, 0),
+(59, 1, 18, '2020-01-12 17:56:47.000000', NULL, 0),
+(60, 2, 18, '2020-01-12 17:56:47.000000', NULL, 0),
+(61, 1, 18, '2020-01-12 17:57:45.000000', NULL, 0),
+(62, 2, 18, '2020-01-12 17:57:45.000000', NULL, 0),
+(63, 1, 18, '2020-01-12 17:58:05.000000', NULL, 0),
+(64, 2, 18, '2020-01-12 17:58:05.000000', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -372,13 +398,55 @@ INSERT INTO `time` (`time_id`, `order_id`, `status_id`, `timestamp`, `attr1`, `a
 --
 
 CREATE TABLE `transaction` (
-  `_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
   `transaction_id` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0',
   `attr1` varchar(255) DEFAULT NULL,
   `attr2` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`t_id`, `payment_id`, `transaction_id`, `attr1`, `attr2`) VALUES
+(3, 1, 'jdcjhdvjcvhds', NULL, NULL),
+(4, 1, 'dkbvdbv', NULL, NULL),
+(5, 2, 'dffvfvkbvdbv', NULL, NULL),
+(6, 1, 'dkbvdbv', NULL, NULL),
+(7, 2, 'dffvfvkbvdbv', NULL, NULL),
+(8, 1, 'dbfjkdsbkv', NULL, NULL),
+(9, 2, 'dbfjkdsbkv', NULL, NULL),
+(10, 1, 'dbfjkdsbkv', NULL, NULL),
+(11, 2, 'dbfjkdsbkv', NULL, NULL),
+(12, 1, 'dbfjkdsbkv', NULL, NULL),
+(13, 2, 'dbfjkdsbkv', NULL, NULL),
+(14, 1, 'dbfjkdsbkv', NULL, NULL),
+(15, 2, 'dbfjkdsbkv', NULL, NULL),
+(16, 1, 'dbfjkdsbkv', NULL, NULL),
+(17, 2, 'dbfjkdsbkv', NULL, NULL),
+(18, 1, 'dbfjkdsbkv', NULL, NULL),
+(19, 2, 'dbfjkdsbkv', NULL, NULL),
+(20, 1, 'dbfjkdsbkv', NULL, NULL),
+(21, 2, 'dbfjkdsbkv', NULL, NULL),
+(22, 1, 'dbfjkdsbkv', NULL, NULL),
+(23, 2, 'dbfjkdsbkv', NULL, NULL),
+(24, 1, 'dbfjkdsbkv', NULL, NULL),
+(25, 2, 'dbfjkdsbkv', NULL, NULL),
+(26, 1, 'dbfjkdsbkv', NULL, NULL),
+(27, 2, 'dbfjkdsbkv', NULL, NULL),
+(28, 1, 'dbfjkdsbkv', NULL, NULL),
+(29, 2, 'dbfjkdsbkv', NULL, NULL);
+
+--
+-- Triggers `transaction`
+--
+DELIMITER $$
+CREATE TRIGGER `pay` AFTER INSERT ON `transaction` FOR EACH ROW BEGIN
+UPDATE orders SET status='14' WHERE order_id=(SELECT order_id FROM payment WHERE payment_id=new.payment_id);
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -504,7 +572,7 @@ ALTER TABLE `time`
 -- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`_id`),
+  ADD PRIMARY KEY (`t_id`),
   ADD KEY `payment_id` (`payment_id`);
 
 --
@@ -536,7 +604,7 @@ ALTER TABLE `cloth_type`
 -- AUTO_INCREMENT for table `mapping_collectionboy`
 --
 ALTER TABLE `mapping_collectionboy`
-  MODIFY `map_coll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `map_coll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `mapping_supervisor`
 --
@@ -546,12 +614,12 @@ ALTER TABLE `mapping_supervisor`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `rate`
 --
@@ -566,12 +634,12 @@ ALTER TABLE `society`
 -- AUTO_INCREMENT for table `time`
 --
 ALTER TABLE `time`
-  MODIFY `time_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `time_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `wings`
 --
