@@ -7,6 +7,9 @@ router.use("/signup", signup);
 var get=require("./get");
 router.use("/get",get);
 //done
+var checkUser=require("./checkUser");
+router.use("/checkUser",checkUser);
+//done
 var getOutstanding=require("./getOutstanding");
 router.use("/getOutstanding",getOutstanding);
 //not done
