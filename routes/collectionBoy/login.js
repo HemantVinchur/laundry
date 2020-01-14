@@ -20,6 +20,7 @@ router.post("/", (req, res) => {
           message: "there was some error with query"
         });
       }
+      console.log(result);
       if (result.length > 0) {
         if (result[0].admin_id > 0 && result[0].admin_type=='collection_boy') {
           bcrypt.compare(password, result[0].password, function(err, res1) {
