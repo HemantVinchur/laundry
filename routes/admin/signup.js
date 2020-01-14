@@ -9,7 +9,7 @@ const router = express.Router();
 //This route is to add the user means signup the user with first_name,
 //last_name,email,mobile_number , password, address  , gender ,date_of_birth
 router.post("/", verifyToken, (req, res) => {
-  if (req.decoded.admin_type != "admin") {
+  if (req.decoded.admin_type == "admin") {
     return res.json({ msg: "Unauthorized" });
   }
   let {
