@@ -43,6 +43,9 @@ router.post("/", (req, res) => {
           res.json({ msg: "mobile no  doesnot exist" });
         }
       }
+      else{
+      res.json({ msg: "mobile no  doesnot exist" });
+      }
     });
   } else {
     res.json({ msg: "Enter all fields" });
