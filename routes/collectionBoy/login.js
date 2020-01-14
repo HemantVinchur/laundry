@@ -24,6 +24,7 @@ router.post("/", (req, res) => {
         if (result[0].admin_id > 0 && result[0].admin_type=='collection_boy') {
           bcrypt.compare(password, result[0].password, function(err, res1) {
             // res === true
+            console.log(err);
             if (res1) {
               const token = jwt.sign(
                 {
