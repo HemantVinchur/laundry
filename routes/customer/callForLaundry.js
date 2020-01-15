@@ -8,7 +8,8 @@ router.post("/",(request,response)=>
     db.query(query,(err,res)=>{
         if (err != null) response.status(500).json({ error: err.message , success: false});
         // console.log(res);
-        if(res.affectedRows>0)
+     else{
+           if(res.affectedRows>0)
         {
         let date=new Date();
         let month=date.getMonth()+1;
@@ -25,6 +26,7 @@ router.post("/",(request,response)=>
     else{
         response.json({message : "Order Not Created",success:false});
     }
+     }
     });
 });
 module.exports=router;
