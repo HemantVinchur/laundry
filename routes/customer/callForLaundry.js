@@ -13,8 +13,8 @@ router.post("/",(request,response)=>
         let date=new Date();
         let month=date.getMonth()+1;
         let timestamp=date.getFullYear()+'-'+month+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
-        let subquery=`INSERT INTO time(order_id,status_id,timestamp,customer_id) VALUES
-                      ('${res.insertId}','0','${timestamp}','${request.body.customer_id}')  `;
+        let subquery=`INSERT INTO time(order_id,status_id,timestamp) VALUES
+                      ('${res.insertId}','0','${timestamp}')  `;
                       console.log(subquery);
                       
         db.query(subquery,(err,res)=>{
