@@ -6,8 +6,9 @@ router.post("/",(request,response)=>
     let query=`INSERT INTO orders(customer_id) VALUES ('${request.body.customer_id}') ;`;
     // to initiate the order table
     db.query(query,(err,res)=>{
-        if (err != null) response.status(500).json({ error: err.message , success: false});
-        // console.log(res);
+        if (err != null){ response.status(500).json({ error: err.message , success: false});
+         console.log(err);
+                        }
      else{
            if(res.affectedRows>0)
         {
