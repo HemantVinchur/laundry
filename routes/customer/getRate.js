@@ -9,13 +9,13 @@ router.post("/",(request,response)=>
                WHERE society_id in (select society_id from customer where customer_id='${request.body.customer_id}')`;
     db.query(query,(err,res)=>{
         if (err)
-        {response.status(500).json({ error: err.message, success: false });
-        
+        {response.status(500).json({ error: err.message, success: false });}
+        else{
          if(res.length>0){response.status(200).json({result:res,message:"Rate For Your Society", success: true});}
         else {
             response.json({success:true,message:"Rate Not Updated For Your Society"});
         }
-        
+        }
     });
 });
 module.exports=router;
