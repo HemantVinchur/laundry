@@ -25,4 +25,17 @@ router.use("/mapping_supervisor", mapping_supervisor);
 var mapping_collectionboy = require("./allocate/mapping_collectionboy/mapping_collectionboy");
 router.use("/mapping_collectionboy", mapping_collectionboy);
 
+var rate = require("./rate/rate");
+router.use("/rate", rate);
+
+var cloth_type = require("./cloth_type/cloth_type");
+router.use("/cloth_type", cloth_type);
+
+var order_detail = require("./order_detail/order_detail");
+router.use("/order_detail", order_detail);
+
+var help = require("./help/help");
+router.use("/help", help);
+
+
 module.exports = router;
