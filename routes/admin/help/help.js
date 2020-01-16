@@ -7,10 +7,10 @@ router.use("/add", add);
 var get = require("./get");
 router.use("/get", get);
 
-var update = require("./update");
-router.use("/update", update);
+//var update = require("./update");
+//router.use("/update", update);
 
-var deletesociety = require("./delete");
-router.use("/delete", deletesociety);
+//var deletesociety = require("./delete");
+//router.use("/delete", deletesociety);
 
 module.exports = router;
