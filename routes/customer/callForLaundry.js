@@ -20,7 +20,9 @@ router.post("/",(request,response)=>
                       console.log(subquery);
                       
         db.query(subquery,(err,res)=>{
-            if (err != null) response.status(500).json({ error: err.message , success: false});
+            if (err != null){ return response.status(500).json({ error: err.message , success: false});
+                    console.log(err);                 
+                            }
             response.json({success:true,message:"order created successfully"});
         })    
     }
