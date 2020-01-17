@@ -20,12 +20,10 @@ router.post("/", (req, res) => {
           message: "there was some error with query"
         });
       }
-      console.log(result);
       if (result.length > 0) {
         if (result[0].admin_id > 0 && result[0].admin_type=='collection_boy') {
           bcrypt.compare(password, result[0].password, function(err, res1) {
             // res === true
-            console.log(err);
             if (res1) {
               const token = jwt.sign(
                 {
@@ -33,7 +31,7 @@ router.post("/", (req, res) => {
                 },
                 "TOKENSECRETFORADMIN"
               );
-              res.header("auth-token", token).json({ tokenkey: token,admin_type:result[0].admin_type });
+              res.header("auth-token", token).json({ tokenkey: token });
             } else {
               res.json({ msg: "Wrong password" });
             }
@@ -42,9 +40,6 @@ router.post("/", (req, res) => {
         } else {
           res.json({ msg: "mobile no  doesnot exist" });
         }
-      }
-      else{
-      res.json({ msg: "mobile no  doesnot exist" });
       }
     });
   } else {

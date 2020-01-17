@@ -10,8 +10,8 @@ router.use("/callsForDelivery", callsForDelivery);
 var callsForDelivery = require("./callsForDelivery");
 router.use("/callsForDelivery", callsForDelivery);
 
-var moreThan30 = require("./moreThan30");
-router.use("/moreThan30", moreThan30);
+var common30 = require("./common30");
+router.use("/common30", common30);
 
 var collectCloth=require("./collectCloth");
 router.use("/collectCloth", collectCloth);
