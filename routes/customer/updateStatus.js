@@ -8,7 +8,7 @@ router.post("/",(request,response)=>
     WHERE
     order_id='${request.body.order_id}';`;
     db.query(status,(err,res)=>{
-        if (err != null) response.status(500).json({ error: err.message , success: false});
+        if (err != null) return response.status(500).json({ error: err.message , success: false});
         let date=new Date();
         let month=date.getMonth()+1;           
         let timestamp=date.getFullYear()+'-'+month+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
