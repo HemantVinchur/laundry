@@ -16,7 +16,7 @@ router.post("/",(request,response)=>
                       ('${request.body.order_id}','${request.body.status}','${timestamp}')  `;
                     //   console.log(subquery); 
         db.query(subquery,(error,result)=>{
-            if (error) response.status(500).json({ error: error.message , success: false});
+            if (error) return response.status(500).json({ error: error.message , success: false});
             response.json({success:true,message:"timestamp recorded"});
         })
   });
