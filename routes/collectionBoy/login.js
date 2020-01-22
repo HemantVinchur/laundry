@@ -16,12 +16,12 @@ router.post("/", (req, res) => {
       if (error) {
         console.log(error);
         return res.json({
-          status: false,
-          message: "there was some error with query"
+          success: false,
+          msg: "there was some error with query"
         });
       }
       if (result.length > 0) {
-        if (result[0].admin_id > 0 && result[0].admin_type=='collection_boy') {
+        if (result[0].admin_id > 0) {
           bcrypt.compare(password, result[0].password, function(err, res1) {
             // res === true
             if (res1) {
@@ -31,19 +31,19 @@ router.post("/", (req, res) => {
                 },
                 "TOKENSECRETFORADMIN"
               );
-              res.header("auth-token", token).json({ tokenkey: token });
+              res.header("auth-token", token).json({ tokenkey: token,success:true });
             } else {
-              res.json({ msg: "Wrong password" });
+              res.json({ msg: "Wrong password",success:false });
             }
           });
           //Create and assign  a token
         } else {
-          res.json({ msg: "mobile no  doesnot exist" });
+          res.json({ msg: "mobile no  doesnot exist",success:false });
         }
       }
     });
   } else {
-    res.json({ msg: "Enter all fields" });
+    res.json({ msg: "Enter all fields",success:false });
   }
 });
 
