@@ -6,8 +6,8 @@ router.post("/", verifyToken, (req, res) => {
   if (req.decoded.admin_type != "admin") {
     return res.json({ msg: "Unauthorized" });
   }
-  let { order_id, cloth_type_id, count } = req.body;
-  if (order_id && cloth_type_id && count) {
+//   let { order_id, cloth_type_id, count } = req.body;
+//   if (order_id && cloth_type_id && count) {
 //     let post = {
 //       order_id: order_id,
 //       cloth_type_id: cloth_type_id,
@@ -35,7 +35,7 @@ router.post("/", verifyToken, (req, res) => {
   } else {
     res.json({ msg: "All fields are required" });
   }
-});
+);
 
 module.exports = router;
 
