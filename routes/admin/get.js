@@ -12,6 +12,7 @@ router.post("/", verifyToken, (req, res) => {
   }
   console.log(req.body.admin_type.toString());
   console.log(req.body.admin_type);
+  console.log(`select name,mobile_no,address_1,address_2,city,admin_type from admin where admin_type in (${req.body.admin_type.toString()})`)
   let getAdminQuery=`select name,mobile_no,address_1,address_2,city,admin_type from admin where admin_type in (${req.body.admin_type.toString()})`
   db.query(getAdminQuery,(err,result)=>{
     if(err)
