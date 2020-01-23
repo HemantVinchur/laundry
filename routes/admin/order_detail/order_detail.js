@@ -13,4 +13,7 @@ router.use("/update", update);
 var deletesociety = require("./delete");
 router.use("/delete", deletesociety);
 
+var order_det = require("./order_det");
+router.use("/order_det", order_det);
+
 module.exports = router;
