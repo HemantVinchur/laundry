@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
                 },
                 "TOKENSECRETFORADMIN"
               );
-              res.header("auth-token", token).json({ tokenkey: token,success:true });
+              res.header("auth-token", token).json({ tokenkey: token,success:true,type:result[0].admin_type });
             } else {
               res.json({ msg: "Wrong password",success:false });
             }
