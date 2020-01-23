@@ -4,6 +4,9 @@ var router = express.Router();
 // var add = require("./add");
 // router.use("/add", add);
 
+var get = require("./get");
+router.use("/get",get);
+
 var signup = require("./signup");
 router.use("/signup", signup);
 
