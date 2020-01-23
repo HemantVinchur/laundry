@@ -12,7 +12,7 @@ router.post("/",(request,response)=>
             
             if(result.length>0)
             {
-                return response.json({msg:"Order Already Exists. Wait For Sometime",success:false});
+                return response.json({message:"Order Already Exists. Wait For Sometime",success:false});
             }
             else{
                 let query=`INSERT INTO orders(customer_id) VALUES ('${request.body.customer_id}') ;`;
