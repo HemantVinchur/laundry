@@ -11,7 +11,7 @@ router.post("/",(request,response)=>
     {
         if (err != null) response.status(500).json({ error: err.message });
         if(res.length>0){
-         response.status(200).json({result:res,success:true});   
+         response.status(200).json({result:res,message:"Orders exist",success:true});   
         }
         else{
             response.json({message:"No Ongoing Order",success:true});
