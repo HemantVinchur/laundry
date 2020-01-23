@@ -12,7 +12,7 @@ router.post("/", verifyToken, (req, res) => {
   }
   let getAdminQuery=`select name,mobile_no,address_1,address_2,city,admin_type from admin where admin_id in (${req.body.admin_id.toString()})`
   db.query(getAdminQuery,(err,result)=>{
-    if(error)
+    if(err)
     {
       console.log(error);
        return res.json({success:false,error:"Some Error Occured"});
