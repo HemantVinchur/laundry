@@ -14,7 +14,7 @@ router.post("/", verifyToken, (req, res) => {
   db.query(getAdminQuery,(err,result)=>{
     if(err)
     {
-      console.log(error);
+      console.log(err);
        return res.json({success:false,error:"Some Error Occured"});
     }
     else{
