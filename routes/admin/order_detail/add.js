@@ -28,7 +28,7 @@ router.post("/", verifyToken, (req, res) => {
     else {
       if (postResult.affectedRows > 0) {
         let orderQuery = `update orders set status=6 where order_id='${req.body.order_id}' `
-        let timequery = `insert into time(order_id,status_id,timestamp) values(${req.body.order_id},6,"timestamp")`
+        let timequery = `insert into time(order_id,status_id,timestamp) values(${req.body.order_id},6,"${timestamp}")`
         db.query(orderQuery,(error,orderQueryResult)=>{
             if(error){
               console.log(error);
