@@ -11,22 +11,21 @@ router.post("/", verifyToken, (req, res) => {
     return res.json({ msg: "Unauthorized" });
   }
   let getAdminQuery=`select name,mobile_no,address_1,address_2,city,admin_type from admin where admin_id in (${req.body.admin_id.toString()})`
-  db.query(getAdminQuery)
-  .then((result)=>{
-    if(result.length>0)
-    {
-      return res.json({success:true,result:result});
-    }
-    else{
-      return res.json({success:true,msg:"No admin found"});
-    }
-  })
-  .catch((error)=>{
+  db.query(getAdminQuery,(err,result)=>{
     if(error)
     {
       console.log(error);
        return res.json({success:false,error:"Some Error Occured"});
     }
+    else{
+      if(result.length>0)
+        {
+      return res.json({success:true,result:result});
+       }
+    else{
+      return res.json({success:true,msg:"No admin found"});
+      }
+    }
   })
-  });
+});
 module.exports = router;
