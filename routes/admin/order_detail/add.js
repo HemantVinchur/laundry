@@ -16,7 +16,7 @@ router.post("/", verifyToken, (req, res) => {
     //     let sql = "INSERT INTO order_detail SET ?";
     //     let query = db.query(sql, post, (err, result) => {
   let post = `INSERT into order_detail(order_id,cloth_type_id,count) values ?`
-  db.query(post, [req.body.items.map(item => [req.body.order_id, item.cloth_id, item.count])], (err, postResult) => {
+  db.query(post, [req.body.items.map(item => [req.body.order_id, item.cloth_type_id, item.count])], (err, postResult) => {
     if (err) {
       console.log(err);
       res.status(200).json({ msg: "no detail has been added" })
