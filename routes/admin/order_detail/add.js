@@ -6,6 +6,10 @@ router.post("/", verifyToken, (req, res) => {
   if (req.decoded.admin_type != "admin") {
     return res.json({ msg: "Unauthorized" });
   }
+  
+  let date=new Date();
+                  let month=date.getMonth()+1;
+                    let timestamp=date.getFullYear()+'-'+month+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
   // let { order_id, cloth_type_id, count } = req.body;
   // if (order_id && cloth_type_id && count) {
     //     let post = {
@@ -24,7 +28,7 @@ router.post("/", verifyToken, (req, res) => {
     else {
       if (postResult.affectedRows > 0) {
         let orderQuery = `update orders set status=6 where order_id='${req.body.order_id}' `
-        let timequery = `insert into time(order_id,status_id,timestamp) values(${req.body.order_id},6,Date.now())`
+        let timequery = `insert into time(order_id,status_id,timestamp) values(${req.body.order_id},6,"timestamp")`
         db.query(orderQuery,(error,orderQueryResult)=>{
             if(error){
               console.log(error);
