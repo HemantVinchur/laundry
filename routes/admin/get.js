@@ -28,4 +28,5 @@ router.post("/", verifyToken, (req, res) => {
        return res.json({success:false,error:"Some Error Occured"});
     }
   })
-  })
+  });
+module.exports = router;
