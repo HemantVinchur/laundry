@@ -16,7 +16,7 @@ router.post("/", verifyToken, (req, res) => {
 //     let sql = "INSERT INTO order_detail SET ?";
 //     let query = db.query(sql, post, (err, result) => {
     let post=`INSERT into order_detail(order_id,cloth_type_id,count) values ?`
-                  pool.query(post,[req.body.items.map(item =>[req.body.order_id,item.cloth_id,item.count])])
+                  pool.query(post,[req.body.items.map(item =>[item.order_id,item.cloth_id,item.count])])
                   .then((postResult)=>{
                   if(postResult.affectedRows>0)
                       {
