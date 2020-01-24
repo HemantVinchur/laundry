@@ -17,7 +17,7 @@ router.post("/",(request,response)=>
                     //   console.log(subquery); 
         db.query(subquery,(error,result)=>{
             if (error) return response.status(500).json({ error: error.message , success: false});
-            response.json({success:true,message:"timestamp recorded"});
+            return response.json({success:true,message:"timestamp recorded"});
         })
   });
 });
