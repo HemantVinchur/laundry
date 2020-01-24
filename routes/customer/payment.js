@@ -14,20 +14,15 @@ router.post("/",(request,response)=>
             let subquery=`INSERT INTO time(order_id,status_id,timestamp) VALUES ?`;
             if(request.body.msg=='success'){
                 db.query(subquery,[request.body.transactions.map(item => [item.order_id,'14',timestamp])],(error,result)=>{
-                    if (err != null) return response.status(500).json({ error: error.message , success: false});
-                    response.json({message:"success"});        
+                    if (error != null) return response.status(500).json({ error: error.message , success: false});
+                    return response.json({message:"success"});        
                 })  ;
             }
             else{
-                db.query(subquery,[request.body.transactions.map(item => [item.order_id,'18',timestamp])],(error,result)=>{
-                    if (error != null) return response.status(500).json({ error: error.message , success: false});
-                    // response.json({message:"success"});
-
+                db.query(subquery,[request.body.transactions.map(item => [item.order_id,'18',timestamp])],(error3,result)=>{
+                    if (error3 != null) return response.status(500).json({ error: error3.message , success: false});
+       
                     let subquery2=`UPDATE orders SET status='18' WHERE order_id IN (`;
-                    // request.body.transactions.forEach(element => {
-                    //     subquery2=subquery2+element.order_id;
-                        
-                    // });
                     for(i=0;i<request.body.transactions.length;i++)
                     {
                         if(i==request.body.transactions.length-1)
