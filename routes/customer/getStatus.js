@@ -9,12 +9,12 @@ router.post("/",(request,response)=>
                WHERE orders.customer_id='${request.body.customer_id}' AND NOT orders.status='14'`
     db.query(query,(err,res)=>
     {
-        if (err != null) return response.status(500).json({ error: err.message });
+        if (err != null) return response.status(500).json({ error: err.message,success:false });
         if(res.length>0){
-         response.status(200).json({result:res,message:"Orders exist",success:true});   
+         return response.status(200).json({result:res,message:"Orders exist",success:true});   
         }
         else{
-            response.json({message:"No Ongoing Order",success:true});
+            return response.json({message:"No Ongoing Order",success:true});
         }
         
     });
