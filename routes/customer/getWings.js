@@ -8,10 +8,10 @@ router.post("/",(request,response)=>
     {
         if (err != null) return response.status(500).json({ error: err.message,success:false });
         if(res.length>0){
-        response.status(200).json({result:res,success:true});
+       return response.status(200).json({result:res,success:true});
         }
         else{
-            response.json({message:"No Wings Exist Of This Society",success:true});
+            return response.json({message:"No Wings Exist Of This Society",success:true});
         }
     });
 });
