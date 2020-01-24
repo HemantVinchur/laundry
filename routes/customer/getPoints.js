@@ -10,7 +10,7 @@ router.post("/",(request,response)=>
                 AND orders.status='14'`;
     db.query(points,(err,res)=>{
         if (err != null) return response.status(500).json({ error: err.message, success:false });
-        console.log(res);
+//         console.log(res);
         if(res.length>0){
         let total=0;
         res.forEach(element => {
@@ -23,8 +23,7 @@ router.post("/",(request,response)=>
         let subquery=`INSERT INTO time(order_id,status_id,timestamp) VALUES ?`;
         db.query(subquery,[res.map(item => [item.order_id,'16',timestamp])],(error,result)=>{
                 if (err != null) return response.status(500).json({ error: error.message , success: false});
-                console.log(subquery);
-                
+//                 console.log(subquery);
                 // response.json({message:"success"});
                 let subquery2=`UPDATE orders SET status='16' WHERE order_id IN (`;
                 for(i=0;i<res.length;i++)
@@ -38,8 +37,7 @@ router.post("/",(request,response)=>
                 }
                 db.query(subquery2,(error,result2)=>{
                     if (err != null) return response.status(500).json({ error: error.message , success: false});
-                    console.log(subquery2);
-                    
+//                     console.log(subquery2);           
                     response.json({message:"status updated",points:points});
                 })  ; 
             })  ;
