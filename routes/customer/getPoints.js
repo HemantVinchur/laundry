@@ -22,7 +22,7 @@ router.post("/",(request,response)=>
         let timestamp=date.getFullYear()+'-'+month+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
         let subquery=`INSERT INTO time(order_id,status_id,timestamp) VALUES ?`;
         db.query(subquery,[res.map(item => [item.order_id,'16',timestamp])],(error,result)=>{
-                if (err != null) return response.status(500).json({ error: error.message , success: false});
+                if (error != null) return response.status(500).json({ error: error.message , success: false});
 //                 console.log(subquery);
                 // response.json({message:"success"});
                 let subquery2=`UPDATE orders SET status='16' WHERE order_id IN (`;
@@ -35,21 +35,19 @@ router.post("/",(request,response)=>
                     else
                     subquery2=subquery2+res[i].order_id+',';
                 }
-                db.query(subquery2,(error,result2)=>{
-                    if (err != null) return response.status(500).json({ error: error.message , success: false});
-//                     console.log(subquery2);           
-                    response.json({message:"status updated",points:points});
+                db.query(subquery2,(error2,result2)=>{
+                    if (error2 != null) return response.status(500).json({ error: error2.message , success: false});
+//                     console.log(subquery2);                  
+                        return   response.json({message:"status updated",points:points});
                 })  ; 
             })  ;
         
         }
 
     else{
-        response.json({message:"No previous payment done",success:true})
+       return response.json({message:"No previous payment done",success:true})
     }
         // response.status(200).json({result:points,success:true});
     });
 });
 module.exports=router;
-//update orders status column
-//timestamp entry
