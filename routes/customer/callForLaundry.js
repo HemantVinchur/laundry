@@ -24,7 +24,7 @@ router.post("/",(request,response)=>
                     {
                     let date=new Date();
                     let dummydateValue=date.toISOString();
-                    let timevalue=dateValue.split('T')[1].slice(0,8);
+                    let timevalue=dummydateValue.split('T')[1].slice(0,8);
                     let month=date.getMonth()+1;
                     let timestamp=date.getFullYear()+'-'+month+'-'+date.getDate()+' '+timevalue;
                     let subquery=`INSERT INTO time(order_id,status_id,timestamp) VALUES
