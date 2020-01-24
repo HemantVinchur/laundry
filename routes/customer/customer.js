@@ -13,8 +13,8 @@ router.use("/checkUser",checkUser);
 var getOutstanding=require("./getOutstanding");
 router.use("/getOutstanding",getOutstanding);
 
-// var getPoints=require("./getPoints");
-// router.use("/getPoints",getPoints);
+var getPoints=require("./getPoints");
+router.use("/getPoints",getPoints);
 
 var getWings=require("./getWings");
 router.use("/getWings",getWings);
