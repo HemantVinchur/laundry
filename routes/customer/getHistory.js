@@ -10,7 +10,7 @@ router.post("/",(request,response)=>
     db.query(query,(err,res)=>{
         if (err != null) return response.status(500).json({ error: err.message , success: false});
         if(res.length>0)
-        response.status(200).json({result:res,success:true});
+        response.status(200).json({result:res,message:"History exists",success:true});
         else
         response.json({message:"no history",success:true});
         //return the passed order_id for order specific details
