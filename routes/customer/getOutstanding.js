@@ -9,7 +9,7 @@ router.post("/",(request,response)=>
                     orders.status='13'`;
     db.query(outstanding,(err,res)=>
     {
-        if (err != null) response.status(500).json({ error: err.message, success:false });
+        if (err != null) return response.status(500).json({ error: err.message, success:false });
         if(res.length>0)
         response.status(200).json({result : res,message:"List of Outstanding", success:true});
         else
