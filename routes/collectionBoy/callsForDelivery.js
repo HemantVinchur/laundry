@@ -5,7 +5,7 @@ const router = express.Router();
 router.post("/",verifyToken,(req,res)=>
 {
     let col_id=req.decoded.admin_id;
-    console.log(col_id);
+//     console.log(col_id);
     
     let query=`SELECT orders.order_id,flat_no,wings_name,society_name,timestamp,customer_name
     FROM mapping_collectionboy 
@@ -16,14 +16,14 @@ router.post("/",verifyToken,(req,res)=>
     INNER JOIN wings ON customer.wings_id=wings.wings_id
     WHERE orders.status='17' AND admin_id='${col_id}'AND time.status_id='17'`;
     db.query(query,(err,result)=>{
-        if (err != null) res.status(500).json({ error: err.message , success: false});
+        if (err != null) return res.status(500).json({ error: err.message , success: false});
         else{
         if(result.length>0)
         {
-            res.json({result:result,success:true});
+          return res.json({result:result,success:true});
         }
         else
-        res.json({message:"NO DELIVERIES NOW",success:true});
+      return res.json({message:"NO DELIVERIES NOW",success:true});
     }
     });
 });
