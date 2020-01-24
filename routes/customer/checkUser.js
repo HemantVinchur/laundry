@@ -6,11 +6,11 @@ router.post("/",(request,response)=>
     let id=request.body.customer_id;
     let query=`Select * from customer WHERE customer.customer_id='${id}';`;
     db.query(query,(err,res)=>{
-        if (err != null) response.status(500).json({ error: err.message , success:false});
+        if (err != null) return response.status(500).json({ error: err.message , success:false});
         if(res.length>0)
-        {response.status(200).json({message:"User Exists",success:true});}
+        { return response.status(200).json({message:"User Exists",success:true});}
         else
-        response.json({success:true,message:"User not found"});
+        return response.json({success:true,message:"User not found"});
     });           
 });
 
