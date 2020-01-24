@@ -10,6 +10,9 @@ router.use("/get",get);
 var getOrders = require("./getOrders");
 router.use("/getOrders", getOrders);
 
+var getOrdersDetail = require("./getOrdersDetail");
+router.use("/getOrdersDetail", getOrdersDetail);
+
 var signup = require("./signup");
 router.use("/signup", signup);
 
