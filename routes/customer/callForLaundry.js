@@ -29,7 +29,7 @@ router.post("/",(request,response)=>
                     let timestamp=date.getFullYear()+'-'+month+'-'+date.getDate()+' '+timevalue;
                     let subquery=`INSERT INTO time(order_id,status_id,timestamp) VALUES
                                   ('${res.insertId}','0','${timestamp}')  `;
-//                                   console.log(subquery);
+                                   console.log(subquery);
                                   
                     db.query(subquery,(error2,result2)=>{
                         if (error2 != null) return response.status(500).json({ error: error2.message , success: false});
