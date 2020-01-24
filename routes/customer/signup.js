@@ -15,9 +15,9 @@ let post = {
             let sql = "INSERT INTO customer SET ?";
             let query = db.query(sql, post, (err, result) => {
               if (err) {
-                response.json({success:false, error:err.message});
+             return  response.json({success:false, error:err.message});
               } else {
-                response.status(200).json({ msg: "Customer has been added", success:true });
+               return response.status(200).json({ msg: "Customer has been added", success:true });
               }
             });
 
