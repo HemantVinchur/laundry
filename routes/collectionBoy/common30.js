@@ -15,14 +15,14 @@ router.post("/",verifyToken,(req,res)=>
     WHERE orders.status='${req.body.status}' 
     AND admin_id='${col_id}' AND time.status_id='${req.body.status}'`;
     db.query(query,(err,result)=>{
-        if (err != null) res.status(500).json({ error: err.message , success: false});
+        if (err != null) return res.status(500).json({ error: err.message , success: false});
         else{
         if(result.length>0)
         {
-            res.json({result:result,success:true});
+            return res.json({result:result,success:true});
         }
         else
-        res.json({message:"NO ORDERS NOW",success:false});
+        return res.json({message:"NO ORDERS NOW",success:false});
     }
     });
 });
