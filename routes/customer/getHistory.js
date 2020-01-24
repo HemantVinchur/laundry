@@ -8,7 +8,7 @@ router.post("/",(request,response)=>
     INNER JOIN time ON orders.order_id=time.order_id
     WHERE orders.status='14' AND orders.customer_id='${request.body.customer_id}' AND time.status_id='14' `;
     db.query(query,(err,res)=>{
-        if (err != null) response.status(500).json({ error: err.message , success: false});
+        if (err != null) return response.status(500).json({ error: err.message , success: false});
         if(res.length>0)
         response.status(200).json({result:res,success:true});
         else
