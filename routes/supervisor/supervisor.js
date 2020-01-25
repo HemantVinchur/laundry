@@ -4,8 +4,8 @@ var router = express.Router();
 // var deliveryList = require("./deliveryList");
 // router.use("/deliveryList", deliveryList);
 
-var operations = require("./operations");
-router.use("/operations", operations);
+var operation = require("./operation");
+router.use("/operation", operation);
 
 
 module.exports= router;
