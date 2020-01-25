@@ -3,10 +3,10 @@ const db = require("../db");
 const verifyToken = require("./../admin/verifyToken");
 const router = express.Router();
 router.post("/",verifyToken,(req,res)=>
-{
+{   
     let col_id=req.decoded.admin_id;
-    let query=`SELECT orders.order_id,total_count,flat_no,wings_name,society_name,customer_name,timestamp FROM mapping_collectionboy 
-    INNER JOIN society ON mapping_collectionboy.centre_id=society.centre_id 
+    let query=`SELECT orders.order_id,total_count,flat_no,wings_name,society_name,customer_name,timestamp FROM mapping_supervisor 
+    INNER JOIN society ON mapping_supervisor.centre_id=society.centre_id 
     INNER JOIN customer ON customer.society_id=society.society_id
     INNER JOIN orders ON orders.customer_id=customer.customer_id
     INNER JOIN time ON time.order_id=orders.order_id
