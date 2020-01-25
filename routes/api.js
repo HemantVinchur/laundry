@@ -16,8 +16,8 @@ var collectionBoy = require("./collectionBoy/collectionBoy");
 
 router.use("/collectionBoy", collectionBoy);
 
-// var supervisor = require("./supervisor/supervisor");
+ var supervisor = require("./supervisor/supervisor");
 
-// router.use("/supervisor", supervisor);
+ router.use("/supervisor", supervisor);
 
 module.exports = router;
