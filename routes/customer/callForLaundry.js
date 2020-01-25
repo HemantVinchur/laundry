@@ -23,10 +23,8 @@ router.post("/",(request,response)=>
                     if(res.affectedRows>0)
                     {
                     let date=new Date();
-                    let dummydateValue=date.toISOString();
-                    let timevalue=dummydateValue.split('T')[1].slice(0,8);
                     let month=date.getMonth()+1;
-                    let timestamp=date.getFullYear()+'-'+month+'-'+date.getDate()+' '+timevalue;
+                    let timestamp=date.getFullYear()+'-'+month+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
                     let subquery=`INSERT INTO time(order_id,status_id,timestamp) VALUES
                                   ('${res.insertId}','0','${timestamp}')  `;
                                    console.log(subquery);
