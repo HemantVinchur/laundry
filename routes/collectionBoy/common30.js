@@ -19,6 +19,7 @@ router.post("/",verifyToken,(req,res)=>
         else{
         if(result.length>0)
         {
+            console.log(result);
             return res.json({result:result,success:true});
         }
         else
