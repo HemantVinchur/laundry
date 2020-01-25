@@ -4,6 +4,7 @@ const verifyToken = require("../admin/verifyToken");
 const router = express.Router();
 router.post("/",verifyToken,(req,res)=>
 {
+    console.log("status",req.body);
     let col_id=req.decoded.admin_id;
     let query=`SELECT orders.order_id,flat_no,wings_name,society_name,total_count,timestamp,customer_name
     FROM mapping_collectionboy 
