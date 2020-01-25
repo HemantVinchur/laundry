@@ -15,7 +15,7 @@ router.post("/",verifyToken,(req,res)=>
     INNER JOIN time ON time.order_id=orders.order_id
     INNER JOIN wings ON customer.wings_id=wings.wings_id
     WHERE orders.status='${req.body.status}' 
-    AND admin_id='${col_id}' AND time.status_id='${req.body.status}'`;
+    AND admin_id='${col_id}'`;
     db.query(query,(err,result)=>{
         if (err != null) return res.status(500).json({ error: err.message , success: false});
         else{
