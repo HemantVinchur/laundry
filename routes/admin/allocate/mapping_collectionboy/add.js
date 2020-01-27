@@ -6,11 +6,11 @@ router.post("/", verifyToken, (req, res) => {
   if (req.decoded.admin_type != "admin") {
     return res.json({ msg: "Unauthorized" });
   }
-  let { admin_id, centre_id, date_to } = req.body;
-  if ((admin_id, centre_id, date_to)) {
+  let { admin_id, society_id, date_to } = req.body;
+  if (admin_id && society_id && date_to) {
     let post = {
       admin_id: admin_id,
-      centre_id: centre_id,
+      society_id: society_id,
       date_to: date_to
     };
     let sql = "INSERT INTO mapping_collectionboy SET ?";
