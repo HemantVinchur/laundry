@@ -7,4 +7,8 @@ router.use("/add", add);
 var update = require("./update");
 router.use("/update", update);
 
+var get = require("./get");
+router.use("/get", get);
+
+
 module.exports = router;
