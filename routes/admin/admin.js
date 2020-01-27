@@ -46,6 +46,9 @@ router.use("/order_detail", order_detail);
 var help = require("./help/help");
 router.use("/help", help);
 
+var holiday = require("./holiday/holiday");
+router.use("/holiday", holiday);
+
 var updateoperations = require("./updateoperations");
 router.use("/updateoperations", updateoperations);
 
