@@ -7,9 +7,18 @@ router.post("/",verifyToken,(req,res)=>
     console.log("status",req.body);
     let col_id=req.decoded.admin_id;
     console.log("col_id",col_id);
-    let query=`SELECT orders.order_id,flat_no,wings_name,society_name,total_count,timestamp,customer_name
+   /* let query=`SELECT orders.order_id,flat_no,wings_name,society_name,total_count,timestamp,customer_name
     FROM mapping_collectionboy 
     INNER JOIN society ON mapping_collectionboy.centre_id=society.centre_id 
+    INNER JOIN customer ON customer.society_id=society.society_id
+    INNER JOIN orders ON orders.customer_id=customer.customer_id
+    INNER JOIN time ON time.order_id=orders.order_id
+    INNER JOIN wings ON customer.wings_id=wings.wings_id
+    WHERE orders.status='${req.body.status}' 
+    AND admin_id='${col_id}'`;*/
+    
+     let query=`SELECT orders.order_id,flat_no,wings_name,society_name,total_count,timestamp,customer_name
+    FROM society 
     INNER JOIN customer ON customer.society_id=society.society_id
     INNER JOIN orders ON orders.customer_id=customer.customer_id
     INNER JOIN time ON time.order_id=orders.order_id
