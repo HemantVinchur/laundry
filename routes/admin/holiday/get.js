@@ -5,7 +5,7 @@ const verifyToken = require("../verifyToken");
 
 router.get("/", (req, res) => {
   let date = req.query.date;
-  let sql = `SELECT * from holiday where holiday_date='${date}'`;
+  let sql = `SELECT * from holiday where holiday_date='${date}' where status=1`;
   let query = db.query(sql, (err, result) => {
     if (err) {
       console.log(err);
