@@ -16,6 +16,8 @@ router.use("/common30", common30);
 var collectCloth=require("./collectCloth");
 router.use("/collectCloth", collectCloth);
 
+var common30supervisor = require("./common30supervisor");
+router.use("/common30supervisor", common30supervisor);
 
 var login=require("./login");
 router.use("/login", login);
