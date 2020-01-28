@@ -9,7 +9,7 @@ router.post("/", (request, response) => {
     //         console.log(res);
 
     if (res.length > 0) {
-      let callfordelivery = `update orders set status_id=10 where customer_id='${request.body.customer_id}'`;
+      let callfordelivery = `update orders set status=10 where customer_id='${request.body.customer_id}'`;
       console.log(callfordelivery);
       db.query(query, (err, res)=> {
         if(err){
