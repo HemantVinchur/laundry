@@ -18,7 +18,7 @@ router.post("/",verifyToken,(req,res)=>
         else{
         if(result.length>0)
         {
-            res.json({result:result,success:true});
+            res.json({result:result,message:"successful",success:true});
         }
         else
         res.json({message:"NO CLOTHES NOW",success:false});
