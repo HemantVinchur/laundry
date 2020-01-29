@@ -27,7 +27,7 @@ router.post("/",verifyToken,(req,res)=>
     AND admin_id='${col_id}' and orders.status='${req.body.status}'`
     }
     else{*/
-    query=`SELECT orders.order_id,flat_no,wings_name,society_name,total_count,timestamp,customer_name
+    query=`SELECT orders.order_id,flat_no,wings_name,society_name,total_count,timestamp,customer_name,time.status_id
     FROM mapping_collectionboy 
     INNER JOIN society ON mapping_collectionboy.society_id=society.society_id 
     INNER JOIN customer ON customer.society_id=society.society_id
@@ -35,7 +35,7 @@ router.post("/",verifyToken,(req,res)=>
     INNER JOIN time ON time.order_id=orders.order_id
     INNER JOIN wings ON customer.wings_id=wings.wings_id
     WHERE orders.status='${req.body.status}' 
-    AND admin_id='${col_id}'`
+    AND admin_id='${col_id}' AND time.status_id='${req.body.status}'`
     //}
   
    
