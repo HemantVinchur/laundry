@@ -25,5 +25,8 @@ router.use("/login", login);
 var getStandardTime= require("./getStandardTime");
 router.use("/getStandardTime",getStandardTime);
 
+var getStandardTimeDelivery= require("./getStandardTimeDelivery");
+router.use("/getStandardTimeDelivery",getStandardTimeDelivery);
+
 
 module.exports=router;
