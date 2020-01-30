@@ -18,7 +18,7 @@ where orders.status='10' and time.status_id='10' and
 customer_prefrence.time_to>='${timeValue}' and 
 customer_prefrence.time_from<='${timeValue}' and  
 society.society_id in (select society_id from mapping_collectionboy where admin_id='${req.decoded.admin_id}')`;
-db.query(query,(result,err)=>{
+db.query(query,(err,result)=>{
     if(err)
     {
       console.log(err);
