@@ -46,4 +46,7 @@ router.use("/callForDelivery",callForDelivery);
 var payment=require("./payment");
 router.use("/payment",payment);
 
+var addStandardTime=require("./addStandardTime");
+router.use("/addStandardTime",addStandardTime);
+
 module.exports = router;
