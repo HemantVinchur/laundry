@@ -22,5 +22,8 @@ router.use("/common30supervisor", common30supervisor);
 var login=require("./login");
 router.use("/login", login);
 
+var getStandardTime= require("./getStandardTime");
+router.use("/getStandardTime",getStandardTime);
+
 
 module.exports=router;
