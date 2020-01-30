@@ -12,6 +12,7 @@ router.get("/",verifyToken,(req,res)=>{
   inner join wings on customer.wings_id=wings.wings_id 
   where customer_prefrence.time_to>='${timeValue}' and society.society_id in (select society_id from mapping_collectionboy where admin_id='${req.decoded.admin_id}')`
   
+  console.log(getStandardTimeQuery);
   db.query(getStandardTimeQuery,(standardTimeResult,err)=>{
     if(err)
     {
