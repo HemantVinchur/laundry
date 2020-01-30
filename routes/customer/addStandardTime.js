@@ -2,7 +2,7 @@ const express = require("express");
 const db = require("../db");
 const router = express.Router();
 
-router.post("/",verifyToken,(req,res)=>{
+router.post("/",(req,res)=>{
   let addStandardQuery=`insert into customer_prefrence(customer_id,time_from,time_to) values('${req.body.customer_id}','${req.body.time_from}','${req.body.time_to}')`
   
   db.query(addStandardQuery,(err,resultAddStandard)=>{
