@@ -19,7 +19,7 @@ router.get("/",verifyToken,(req,res)=>{
     if(err!=null)
     {
       console.log(err);
-      return res.status(500).json({ error: err.message , success: false});
+     // return res.status(500).json({ error: err.message , success: false});
     }
      else if(standardTimeResult.length>0)
       {
