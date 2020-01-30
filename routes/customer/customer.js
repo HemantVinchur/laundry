@@ -40,6 +40,9 @@ router.use("/checkForDelivery",checkForDelivery);
 var callForLaundry=require("./callForLaundry");
 router.use("/callForLaundry",callForLaundry);
 
+var callForDelivery=require("./callForDelivery");
+router.use("/callForDelivery",callForDelivery);
+
 var payment=require("./payment");
 router.use("/payment",payment);
 
