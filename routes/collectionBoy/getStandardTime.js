@@ -21,15 +21,13 @@ router.get("/",verifyToken,(req,res)=>{
       console.log(err);
       return res.status(500).json({ error: err.message , success: false});
     }
-    else{
-      if(standardTimeResult.length>0)
+     else if(standardTimeResult.length>0)
       {
         return res.status(200).json({ success: true, message: "List of Customers",result:standardTimeResult });
       }
       else{
           return res.status(200).json({ success: true, message: "No customer at this time" });
       }
-    }
   })
 })
 module.exports=router;
