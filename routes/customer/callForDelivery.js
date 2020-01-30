@@ -29,7 +29,7 @@ router.post("/", (request, response) => {
             else{
                 if(insertResult.affectedRows>0)
                 {
-                  let orderUpdateQuery=`update order set status='10' where order_id IN (${orderIds.toString()})`
+                  let orderUpdateQuery=`update orders set status='10' where order_id IN (${orderIds.toString()})`
                   db.query(orderUpdateQuery,(err,updateResult)=>{
                     if(err){
                       console.log(err);
