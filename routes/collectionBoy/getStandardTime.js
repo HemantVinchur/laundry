@@ -13,13 +13,13 @@ router.get("/",verifyToken,(req,res)=>{
   where customer_prefrence.time_to>='${timeValue}' and society.society_id in (select society_id from mapping_collectionboy where admin_id='${req.decoded.admin_id}')`
   
   console.log(getStandardTimeQuery);
-  db.query(getStandardTimeQuery,(standardTimeResult,err)=>{
+  db.query(getStandardTimeQuery,(err,standardTimeResult)=>{
     console.log(err);
     console.log(standardTimeResult);
-    if(err!=null)
+    if(err.length>0)
     {
       console.log(err);
-     // return res.status(500).json({ error: err.message , success: false});
+      return res.status(500).json({ error: err.message , success: false});
     }
      else if(standardTimeResult.length>0)
       {
