@@ -8,7 +8,7 @@ let orderQuery=`INSERT into orders(customer_id,total_count,status) values('${req
 db.query(orderQuery,(err,result)=>{
   if (err)
   {return response.status(500).json({ error: err.message , success: false});}
-   if(res.affectedRows>0)
+   if(result.affectedRows>0)
   {
     let date=new Date();
     let month=date.getMonth()+1;
