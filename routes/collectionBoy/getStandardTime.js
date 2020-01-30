@@ -16,7 +16,7 @@ router.get("/",verifyToken,(req,res)=>{
   db.query(getStandardTimeQuery,(err,standardTimeResult)=>{
     console.log(err);
     console.log(standardTimeResult);
-    if(err.length>0)
+    if(err)
     {
       console.log(err);
       return res.status(500).json({ error: err.message , success: false});
