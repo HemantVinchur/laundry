@@ -28,5 +28,7 @@ router.use("/getStandardTime",getStandardTime);
 var getStandardTimeDelivery= require("./getStandardTimeDelivery");
 router.use("/getStandardTimeDelivery",getStandardTimeDelivery);
 
+var addStandardTimeOrder=require("./addStandardTimeOrder");
+router.use("/addStandardTimeOrder",addStandardTimeOrder);
 
 module.exports=router;
