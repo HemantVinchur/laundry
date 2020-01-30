@@ -17,7 +17,6 @@ router.post("/", (request, response) => {
        res.forEach((item)=>{
           orderIds.push(item.order_id);
        })
-       orderIds=
        let date=new Date();
        let month=date.getMonth()+1;           
        let timestamp=date.getFullYear()+'-'+month+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
