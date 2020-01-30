@@ -11,7 +11,7 @@ router.post("/", (request, response) => {
     if (res.length > 0) {
       let callfordelivery = `update orders set status=10 where customer_id='${request.body.customer_id}'`;
       console.log(callfordelivery);
-      db.query(query, (err, res)=> {
+      /*db.query(query, (err, res)=> {
         if(err){
           console.log(err);
           return response.status(500).json({ error: err.message, success: false });
@@ -19,7 +19,9 @@ router.post("/", (request, response) => {
         console.log(res)
         if (res.length > 0)
           return response.status(200).json({ success: true, message: "can call for laundry" });
-      })}
+      })*/
+        return response.status(200).json({ success: true, message: "can call for laundry" });
+    }
         else {
         return response.status(200).json({ success: true, message: "cannot call for laundry" });
       }
