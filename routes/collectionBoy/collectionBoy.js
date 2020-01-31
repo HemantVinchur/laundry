@@ -31,4 +31,7 @@ router.use("/getStandardTimeDelivery",getStandardTimeDelivery);
 var addStandardTimeOrder=require("./addStandardTimeOrder");
 router.use("/addStandardTimeOrder",addStandardTimeOrder);
 
+var standardOrderDelivered=require("./standardOrderDelivered");
+router.use("/standardOrderDelivered",standardOrderDelivered);
+
 module.exports=router;
