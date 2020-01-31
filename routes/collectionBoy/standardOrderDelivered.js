@@ -11,7 +11,7 @@ router.post("/",verifyToken,(req,res)=>{
     let orderUpdateQuery=`update orders set status='12' where order_id='${req.body.order_id}';
     INSERT into time(order_id,status_id,timestamp) values('${req.body.order_id}','12','${timestamp}');`
     
-    db.query(orderUpdateQuery,(err,result){
+    db.query(orderUpdateQuery,(err,result)=>{
        if(err)
       {
       console.log(err);
