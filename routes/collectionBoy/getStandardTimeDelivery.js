@@ -8,7 +8,7 @@ router.get("/",verifyToken,(req,res)=>{
 let date = new Date();
 let timeValue=date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
 
-let query=`select orders.order_id,orders.customer_id as 'customer_id',orders.total_count as 'count',orders.status as 'status',timestamp,customer_name,phone,flat_no,society_name,wings_name from orders 
+let query=`select orders.order_id,orders.customer_id as 'customer_id',orders.total_count as 'count',orders.status as 'status',timestamp,customer_name,phone,flat_no,society_name,wings_name,time_to from orders 
 inner join customer on orders.customer_id=customer.customer_id 
 inner join time on time.order_id=orders.order_id 
 inner join society on customer.society_id=society.society_id 
