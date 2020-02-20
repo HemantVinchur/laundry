@@ -46,6 +46,10 @@ router.use("/order_detail", order_detail);
 var help = require("./help/help");
 router.use("/help", help);
 
+var help_reply = require("./help_reply/help_reply");
+router.use("/help_reply", help_reply);
+
+
 var holiday = require("./holiday/holiday");
 router.use("/holiday", holiday);
 
