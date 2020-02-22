@@ -49,4 +49,7 @@ router.use("/payment",payment);
 var addStandardTime=require("./addStandardTime");
 router.use("/addStandardTime",addStandardTime);
 
+var addFcmToken=require("./addFcmToken");
+router.use("/addFcmToken",addFcmToken);
+
 module.exports = router;
