@@ -21,3 +21,4 @@ router.post('/',(req,res)=>{
       res.json({success:false,msg:"Token or customer_id is missing"});
     }
 })
+module.exports=router;
