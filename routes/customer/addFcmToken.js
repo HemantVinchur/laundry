@@ -6,7 +6,7 @@ router.post('/',(req,res)=>{
     if(req.body.fcmtoken && req.body.customer_id)
     {
       let query=`update customer set fcm_token='${req.body.fcmtoken}' where customer_id='${req.body.customer_id}'`
-      db.query(query,(err,res)=>{
+      db.query(query,(err,result)=>{
             if(err)
             {
             console.log(err);
