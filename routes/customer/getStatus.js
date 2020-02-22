@@ -9,7 +9,7 @@ router.post("/",(request,response)=>
                WHERE orders.customer_id='${request.body.customer_id}' AND NOT orders.status='14' AND time.status_id=orders.status_id`
     db.query(query,(err,res)=>
     {
-        if (err != null) return response.status(500).json({ error: err.message,success:false });
+        if (err != null) {console.log(err);return response.status(500).json({ error: err.message,success:false });}
         if(res.length>0){
          return response.status(200).json({result:res,message:"Orders exist",success:true});   
         }
