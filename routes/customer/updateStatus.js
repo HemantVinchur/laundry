@@ -53,6 +53,7 @@ router.post("/",(request,response)=>
             else{
                 let getTokenQuery=`select fcm_token from customer where customer_id IN (select customer_id from orders where order_id='${request.body.order_id}') AND fcm_token IS NOT NULL`;
                 db.query(getTokenQuery,(err,result2)=>{
+                    console.log(getTokenQuery);
                        if(result2.length>0)
                        {
                         let message={
