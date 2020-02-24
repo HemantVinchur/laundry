@@ -27,9 +27,9 @@ router.post("/", verifyToken, (req, res) => {
     (err, result) => {
       if (err != null) {
         console.log(err);
-        res.status(500).json({ error: err.message, success: false });
+        res.status(500).json({ msg: err.message, success: false });
       } else {
-        res.json({ msg: "Updated Status" });
+        res.json({ msg: "Updated Status", success: true });
       }
     }
   );
