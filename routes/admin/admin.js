@@ -56,5 +56,7 @@ router.use("/holiday", holiday);
 var updateoperations = require("./updateoperations");
 router.use("/updateoperations", updateoperations);
 
+var getSocietyUser = require("./getSocietyUser");
+router.use("/getSocietyUser", getSocietyUser);
 
 module.exports = router;
