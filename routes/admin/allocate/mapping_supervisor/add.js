@@ -10,8 +10,7 @@ router.post("/", verifyToken, (req, res) => {
   if (admin_id && centre_id) {
     let post = {
       admin_id: admin_id,
-      centre_id: centre_id,
-      date_to: date_to
+      centre_id: centre_id
     };
     let sql = "INSERT INTO mapping_supervisor SET ?";
     let query = db.query(sql, post, (err, result) => {
