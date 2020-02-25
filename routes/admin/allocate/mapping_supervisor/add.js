@@ -7,7 +7,7 @@ router.post("/", verifyToken, (req, res) => {
     return res.json({ msg: "Unauthorized" });
   }
   let { admin_id, centre_id} = req.body;
-  if ((admin_id, centre_id) {
+  if (admin_id && centre_id) {
     let post = {
       admin_id: admin_id,
       centre_id: centre_id,
