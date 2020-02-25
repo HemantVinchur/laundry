@@ -5,7 +5,7 @@ const verifyToken = require("../verifyToken");
 
 router.post("/", verifyToken, (req, res) => {
   let { society_id, discount } = req.body;
-  if (society_id && discount) {
+  if (society_id && discount >-1) {
     let post = {
       society_id: society_id,
       discount: discount
