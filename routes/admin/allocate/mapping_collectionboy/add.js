@@ -10,8 +10,7 @@ router.post("/", verifyToken, (req, res) => {
   if (admin_id && society_id) {
     let post = {
       admin_id: admin_id,
-      society_id: society_id,
-      date_to: date_to
+      society_id: society_id
     };
     let sql = "INSERT INTO mapping_collectionboy SET ?";
     let query = db.query(sql, post, (err, result) => {
