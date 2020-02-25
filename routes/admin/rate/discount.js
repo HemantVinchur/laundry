@@ -38,7 +38,7 @@ router.get("/:society_id", verifyToken, (req, res) => {
 
 router.put("/", verifyToken, (req, res) => {
   let { society_id, discount } = req.body;
-  if (society_id && discount) {
+  if (society_id && discount> -1) {
     let update = {
       discount: discount
     };
