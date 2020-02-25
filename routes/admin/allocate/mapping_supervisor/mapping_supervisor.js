@@ -10,5 +10,7 @@ router.use("/update", update);
 var get = require("./get");
 router.use("/get", get);
 
+var getmapping_supervisor = require("./getmapping_supervisor");
+router.use("/getmapping_supervisor", getmapping_supervisor);
 
 module.exports = router;
