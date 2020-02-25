@@ -11,5 +11,8 @@ router.use("/update", update);
 var get = require("./get");
 router.use("/get", get);
 
+var getmapping_collectionboy = require("./getmapping_collectionboy");
+router.use("/getmapping_collectionboy", getmapping_collectionboy);
+
 
 module.exports = router;
