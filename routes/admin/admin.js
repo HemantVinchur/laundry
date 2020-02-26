@@ -59,4 +59,10 @@ router.use("/updateoperations", updateoperations);
 var getSocietyUser = require("./getSocietyUser");
 router.use("/getSocietyUser", getSocietyUser);
 
+var paymentcollection = require("./paymentcollection");
+router.use("/paymentcollection", paymentcollection);
+
+var getuserundersupervisor = require("./getuserundersupervisor");
+router.use("/getuserundersupervisor", getuserundersupervisor);
+
 module.exports = router;
