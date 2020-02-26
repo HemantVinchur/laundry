@@ -11,7 +11,7 @@ router.post("/", (req, res) => {
     } else {
       console.log(result);
       if (result[0].r_id === null) {
-        return res.json({ msg: "Record doesnot exist" });
+        return res.json({ msg: "Record doesnot exist", amount: 0 });
       } else {
         const r_id = result[0].r_id;
         let sql1 = `SELECT amount FROM records where r_id=${r_id}`;
