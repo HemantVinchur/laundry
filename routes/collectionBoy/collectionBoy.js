@@ -34,4 +34,7 @@ router.use("/addStandardTimeOrder",addStandardTimeOrder);
 var standardOrderDelivered=require("./standardOrderDelivered");
 router.use("/standardOrderDelivered",standardOrderDelivered);
 
+var addFcmToken=require("./addFcmToken");
+router.use("/addFcmToken",addFcmToken);
+
 module.exports=router;
