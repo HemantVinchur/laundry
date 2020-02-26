@@ -52,4 +52,7 @@ router.use("/addStandardTime",addStandardTime);
 var addFcmToken=require("./addFcmToken");
 router.use("/addFcmToken",addFcmToken);
 
+var getoutstandingofuser = require("./getoutstandingofuser");
+router.use("/getoutstandingofuser", getoutstandingofuser);
+
 module.exports = router;
