@@ -4,7 +4,7 @@ const verifyToken = require("../admin/verifyToken");
 const router = express.Router();
 
 router.post('/',verifyToken,(req,res)=>{
-    if(req.body.fcmtoken && req.body.customer_id)
+    if(req.body.fcmtoken)
     {
       let query=`update admin set fcm_token='${req.body.fcmtoken}' where admin_id='${req.decoded.admin_id}'`
       db.query(query,(err,result)=>{
