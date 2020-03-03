@@ -19,4 +19,16 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/all", (req, res) => {
+
+  let sql = `SELECT * from holiday`;
+  let query = db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json({success:"true",result});
+    }
+  });
+});
+
 module.exports = router;
