@@ -55,4 +55,7 @@ router.use("/addFcmToken",addFcmToken);
 var getoutstandingofuser = require("./getoutstandingofuser");
 router.use("/getoutstandingofuser", getoutstandingofuser);
 
+var getHelp=require("./getHelp");
+router.use("/getHelp",getHelp);
+
 module.exports = router;
