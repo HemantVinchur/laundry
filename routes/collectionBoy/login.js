@@ -31,19 +31,26 @@ router.post("/", (req, res) => {
                 },
                 "TOKENSECRETFORADMIN"
               );
-              res.header("auth-token", token).json({ tokenkey: token,success:true,type:result[0].admin_type });
+              res
+                .header("auth-token", token)
+                .json({
+                  tokenkey: token,
+                  success: true,
+                  type: result[0].admin_type
+                });
             } else {
-              res.json({ msg: "Wrong password",success:false });
+              res.json({ msg: "Wrong password", success: false });
             }
           });
           //Create and assign  a token
-        } else {
-          res.json({ msg: "mobile no  doesnot exist",success:false });
-        }
+        } 
+      }
+      else {
+          res.json({ msg: "mobile no  doesnot exist", success: false });
       }
     });
   } else {
-    res.json({ msg: "Enter all fields",success:false });
+    res.json({ msg: "Enter all fields", success: false });
   }
 });
 
