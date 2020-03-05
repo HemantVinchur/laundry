@@ -24,6 +24,10 @@ router.post("/", (req, res) => {
         if (result[0].admin_id > 0) {
           bcrypt.compare(password, result[0].password, function(err, res1) {
             // res === true
+            if(err)
+            {
+              console.log(err);
+            }
             if (res1) {
               const token = jwt.sign(
                 {
@@ -31,9 +35,7 @@ router.post("/", (req, res) => {
                 },
                 "TOKENSECRETFORADMIN"
               );
-              res
-                .header("auth-token", token)
-                .json({
+              res.header("auth-token", token).json({
                   tokenkey: token,
                   success: true,
                   type: result[0].admin_type
