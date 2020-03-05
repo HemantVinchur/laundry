@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
             if (res1) {
               const token = jwt.sign(
                 {
-                  admin_id: result[0].admin_id
+                  admin_id: result[0].admin_id,
                   mobile_no: mobile_no,	
                   admin_type: result[0].admin_type
                 },
