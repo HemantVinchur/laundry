@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../db");
 const verifyToken = require("../verifyToken");
-router.put("/:centre_id", verifyToken, (req, res) => {
+router.put("/", verifyToken, (req, res) => {
   
   let {  holiday_id,holiday_date,centre_id} = req.body
   if (holiday_date) {
