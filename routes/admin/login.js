@@ -32,6 +32,8 @@ router.post("/", (req, res) => {
               const token = jwt.sign(
                 {
                   admin_id: result[0].admin_id
+                  mobile_no: mobile_no,	
+                  admin_type: result[0].admin_type
                 },
                 "TOKENSECRETFORADMIN"
               );
