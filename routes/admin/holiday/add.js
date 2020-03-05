@@ -3,10 +3,11 @@ const router = express.Router();
 const db = require("../../db");
 const verifyToken = require("../verifyToken");
 router.post("/", verifyToken, (req, res) => {
-  let { holiday_date } = req.body;
+  let { holiday_date ,centre_id} = req.body;
   if (holiday_date) {
     let post = {
-      holiday_date: holiday_date
+      holiday_date: holiday_date,
+      centre_id:centre_id
     };
     let sql = "INSERT INTO holiday SET ?";
     let query = db.query(sql, post, (err, result) => {
