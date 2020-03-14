@@ -5,7 +5,7 @@ const paytm_checksum=require("../paytm/checksum")
 const paytm_config=require("../paytm/paytm_config").paytm_config
 require('dotenv').config();
 console.log(process.env.MID)
-router.post("/generateCheckSum",(req,res)=>{
+router.post("/",(req,res)=>{
     let {ORDER_ID,CUST_ID,TXN_AMOUNT,MOBILE_NO}=req.body;
     let CALLBACK_URL="https://pguat.paytm.com/paytmchecksum/paytmCallback.jsp";
     let MID=paytm_config.MID;
