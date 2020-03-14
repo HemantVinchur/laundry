@@ -58,4 +58,7 @@ router.use("/getoutstandingofuser", getoutstandingofuser);
 var getHelp=require("./getHelp");
 router.use("/getHelp",getHelp);
 
+var generateCheckSum=require("./generateCheckSum");
+router.use("/generateCheckSum",generateCheckSum);
+
 module.exports = router;
