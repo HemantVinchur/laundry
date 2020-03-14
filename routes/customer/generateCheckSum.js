@@ -22,6 +22,7 @@ router.post("/generateCheckSum",(req,res)=>{
     paramArray['WEBSITE']=WEBSITE;
     paramArray['CALLBACK_URL']=CALLBACK_URL
     paramArray['MOBILE_NO']=MOBILE_NO
+    console.log(paramArray);
     paytm_checksum.genchecksum(paramArray,MERCHANT_KEY,(err,checksum)=>{
             if(err)
             {
