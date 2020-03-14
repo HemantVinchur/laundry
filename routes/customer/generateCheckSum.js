@@ -2,16 +2,17 @@ const express = require("express");
 const db = require("../db");
 const router = express.Router();
 const paytm_checksum=require("../paytm/checksum")
+const paytm_config=require("../paytm/paytm_config").paytm_config
 require('dotenv').config();
 console.log(process.env.MID)
 router.post("/generateCheckSum",(req,res)=>{
     let {ORDER_ID,CUST_ID,TXN_AMOUNT,MOBILE_NO}=req.body;
-    let CALLBACK_URL="";
-    let MID=process.env.MID;
-    let WEBSITE=process.env.WEBSITE;
-    let CHANNEL_ID=process.env.CHANNEL_ID;
-    let INDUSTRY_TYPE_ID=process.env.INDUSTRY_TYPE_ID;
-    let MERCHANT_KEY=process.env.MERCHANT_KEY;
+    let CALLBACK_URL="https://pguat.paytm.com/paytmchecksum/paytmCallback.jsp";
+    let MID=paytm_config.MID;
+    let WEBSITE=paytm_config.WEBSITE;
+    let CHANNEL_ID=paytm_config.CHANNEL_ID;
+    let INDUSTRY_TYPE_ID=paytm_config.INDUSTRY_TYPE_ID;
+    let MERCHANT_KEY=paytm_config.MERCHANT_KEY;
     let paramArray={};
     paramArray['MID']=MID;
     paramArray['ORDER_ID']=ORDER_ID;
