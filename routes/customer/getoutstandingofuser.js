@@ -21,9 +21,9 @@ router.post("/", (req, res) => {
           } else {
             console.log(result);
             var amount = 0;
-
+            let payment_id=`WILNDRY${r_id}`
             amount = result[0].amount;
-            res.json({ amount: amount });
+            res.json({ amount: amount,payment_id:payment_id });
           }
         });
       }

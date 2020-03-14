@@ -61,4 +61,7 @@ router.use("/getHelp",getHelp);
 var generateCheckSum=require("./generateCheckSum");
 router.use("/generateCheckSum",generateCheckSum);
 
+var verifyOrderPaymentStatus=require("./verifyOrderPaymentStatus");
+router.use("/verifyOrderPaymentStatus",verifyOrderPaymentStatus);
+
 module.exports = router;
