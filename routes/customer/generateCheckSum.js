@@ -34,4 +34,5 @@ router.post("/generateCheckSum",(req,res)=>{
               res.json({success:true,checksum_val:checksum})
             }
     })
-})  
+})
+module.exports=router;  
