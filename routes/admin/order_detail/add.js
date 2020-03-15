@@ -29,6 +29,7 @@ router.post("/", verifyToken, (req, res) => {
       if (postResult.affectedRows > 0) {
         let orderQuery = `update orders set status=6 where order_id='${req.body.order_id}' `
         let timequery = `insert into time(order_id,status_id,timestamp) values(${req.body.order_id},6,"${timestamp}")`
+        let paymentQuery=`insert into payment(customer_id,amount,order_id) values((select customer_id from orders where order_id=${req.body.order_id}),'${req.body.amount}','${req.body.order_id}')`
         db.query(orderQuery,(error,orderQueryResult)=>{
             if(error){
               console.log(error);
@@ -42,7 +43,15 @@ router.post("/", verifyToken, (req, res) => {
                    return res.status(500).json({ msg: "Some server error" })
                  }
                  else{
-                   res.status(200).json({ msg: "order detail has been added" });
+                   db.query(paymentQuery,(err,paymentInsertResult)=>{
+                    if(err)
+                    {
+                      return res.status(500).json({success:false,msg:"Internal Server Error"})
+                    }
+                     else{
+                         res.status(200).json({ msg: "order detail has been added" });
+                     }
+                   })
                  } 
               })
             }
