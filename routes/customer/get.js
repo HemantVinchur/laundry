@@ -7,14 +7,15 @@ router.post("/",(request,response)=>
     let query=`SELECT customer_name,society_name AS society,wings_name AS wing, flat_no , phone
                FROM customer 
                INNER JOIN society ON customer.society_id=society.society_id 
-               INNER JOIN wings ON wings.society_id=society.society_id
-               WHERE customer.customer_id='${id}'`;
+               INNER JOIN wings ON wings.wings_id=customer.wings_id
+               WHERE customer.customer_id='${id}';SELECT time_from,time_to from customer_prefrence where customer_id='${id}'`;
     db.query(query,(err,res)=>{
         if (err != null) return response.status(500).json({ error: err.message , success:false});
 //         console.log(res);
-        
+        let profile=[];
+        profile.push(res[0])
         if(res.length>0)
-        { return response.status(200).json({result:res,success:true});}
+        { return response.status(200).json({result:profile,prefered_time:res[1],success:true});}
         else
         return response.json({success:true,message:"customer not found"});
     });           
