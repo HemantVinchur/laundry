@@ -14,7 +14,7 @@ router.post("/",(request,response)=>
 //         console.log(res);
         
         if(res.length>0)
-        { return response.status(200).json({result:res[0],prefered_time:res[1],success:true});}
+        { return response.status(200).json({result:res,success:true});}
         else
         return response.json({success:true,message:"customer not found"});
     });           
