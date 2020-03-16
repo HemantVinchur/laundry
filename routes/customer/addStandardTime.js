@@ -12,7 +12,7 @@ router.post("/",(req,res)=>{
       return res.status(500).json({ error: err.message , success: false});
     }
      else{
-      if(resultAddStandard.affectedRows>0)
+      if(resultAddStandard.affectedRows[0]>0)
       {
         return res.status(200).json({ success: true, message: "Standard Time Added" });
       }
