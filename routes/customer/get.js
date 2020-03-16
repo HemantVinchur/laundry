@@ -12,10 +12,9 @@ router.post("/",(request,response)=>
     db.query(query,(err,res)=>{
         if (err != null) return response.status(500).json({ error: err.message , success:false});
 //         console.log(res);
-        let profile=[];
-        profile.push(res[0])
+       
         if(res.length>0)
-        { return response.status(200).json({result:profile,prefered_time:res[1],success:true});}
+        { return response.status(200).json({result:res[0],prefered_time:res[1],success:true});}
         else
         return response.json({success:true,message:"customer not found"});
     });           
