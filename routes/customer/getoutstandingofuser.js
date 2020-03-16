@@ -4,6 +4,9 @@ const db = require("../db");
 
 router.post("/", (req, res) => {
   const { customer_id } = req.body;
+  let min = Math.ceil(1000);
+  let max = Math.floor(9999);
+  let randomNumber= Math.floor(Math.random() * (max - min + 1)) + min;
   let sql = `SELECT  max(r_id) as r_id FROM records where customer_id='${customer_id}'`;
   let query = db.query(sql, (err, result) => {
     if (err) {
@@ -21,7 +24,7 @@ router.post("/", (req, res) => {
           } else {
             console.log(result);
             var amount = 0;
-            let payment_id=`WILNDRY${r_id}`
+            let payment_id=`WILNDRY${randomNumber}${r_id}`
             amount = result[0].amount;
             res.json({ amount: amount,payment_id:payment_id });
           }
