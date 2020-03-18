@@ -65,4 +65,7 @@ router.use("/paymentcollection", paymentcollection);
 var getuserundersupervisor = require("./getuserundersupervisor");
 router.use("/getuserundersupervisor", getuserundersupervisor);
 
+var getCustomers = require("./getCustomers");
+router.use("/getCustomers", getCustomers);
+
 module.exports = router;
