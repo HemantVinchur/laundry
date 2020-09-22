@@ -5,19 +5,19 @@ const DBConfig = {
     local: {
         port: 4000,
         con: mysql.createConnection({
-            host: "localhost",
+            host: "https://in.000webhost.com/",
             user: "root",
-            password: "Gattoo@123",
-            database: "laundry"
+            password: "GattooPC@123",
+            database: "id14931869_laundry"
         }),
     },
     dev: {
         port: 2007,
         con: mysql.createConnection({
-            host: "localhost",
+            host: "https://in.000webhost.com/",
             user: "root",
-            password: "Gattoo@123",
-            database: "laundry"
+            password: "GattooPC@123",
+            database: "id14931869_laundry"
         }),
     },
 }
