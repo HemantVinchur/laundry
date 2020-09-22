@@ -3,7 +3,7 @@ var mysql = require('mysql');
 
 const DBConfig = {
     local: {
-        port: 3002,
+        port: 4000,
         con: mysql.createConnection({
             host: "localhost",
             user: "root",
